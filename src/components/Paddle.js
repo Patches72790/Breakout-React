@@ -8,10 +8,8 @@ export const Paddle = ({
     useEffect (() => {
         console.log("changing paddle position to " + position)
         childPaddleRef.current.style.left = position + 'px'
-        childPaddleRef.current.style.top = position + 'px'
-
     }, [position])
 
 
-    return <div /*onMouseMove={onMouseMove}*/ id="paddle" ref={childPaddleRef}></div>
+    return <div id="paddle" ref={childPaddleRef}></div>
 }
