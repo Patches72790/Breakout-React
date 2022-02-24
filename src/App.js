@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, RefObject, useState } from "react";
+import { ReactDOM } from 'react-dom';
+import { Paddle } from './components/Paddle'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export const App = () => {
+
+    const [ mouseXPosition, setMouseXPosition] = useState(null)
+    const paddleRef: RefObject<HTMLDivElement> = useRef(null)
+
+
+    const onMouseMove = (event: MouseEvent) => {
+        setMouseXPosition(event.clientX)
+    }
+
+
+//    const onMouseMove = (event: MouseEvent) => {
+//        event = event || window.event
+//        console.log("moving the paddle")
+//
+//        paddleRef.current.childPaddleRef.style.left = event.pageY + "px"
+//    }
+
+
+
+    return (<div onMouseMove={onMouseMove}>
+        <Paddle position={mouseXPosition}/>
+    </div>)
 }
-
-export default App;
